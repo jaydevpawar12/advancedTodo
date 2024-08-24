@@ -8,7 +8,7 @@ const Employee = require("../models/Employee")
 
 exports.registerAdmin = asyncHandler(async (req, res) => {
     const hash = await bcrypt.hash(req.body.password, 10)
-    await Admin.create(req.body)
+    await Admin.create({ ...req.body, password: hash })
     res.json({ message: "success" })
 })
 exports.loginAdmin = asyncHandler(async (req, res) => {
