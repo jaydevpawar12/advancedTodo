@@ -31,7 +31,7 @@ exports.loginAdmin = asyncHandler(async (req, res) => {
     if (!verify) {
         return res.status(401).json({ message: "Incorrect Password" })
     }
-    const token = jwt.sign({ userId: result._id }, process.env.JET_KEY, { expiresIn: "7d" })
+    const token = jwt.sign({ userId: result._id }, process.env.JWT_KEY, { expiresIn: "7d" })
     res.cookie("admin", token, {
         maxAge: 1000 * 60 * 60 * 24,
         httpOnly: true,
