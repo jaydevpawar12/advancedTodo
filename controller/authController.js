@@ -39,9 +39,12 @@ exports.loginAdmin = asyncHandler(async (req, res) => {
     })
     res.json({
         message: "Logged In Successfully",
-        userId: result._id,
-        email: result.email,
-        mobile: result.mobile,
+        result: {
+            name: result.name,
+            userId: result._id,
+            email: result.email,
+            mobile: result.mobile,
+        }
     })
 
 })
